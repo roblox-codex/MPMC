@@ -1,0 +1,69 @@
+;Arithmetic Instruction
+;Add
+MOV AX, 0010H;
+MOV BX, 010FH;
+
+ADD AX, 0010H;
+ADD AX, BX;
+ADD AX,[SI];
+ADD AX,[6000H];
+ADD [6000H], 0010H;
+ADD AX,0010H;
+
+;Add with Carry
+
+MOV AX, 0FFFH;
+MOV BX, 1000H;
+
+ADC AX, 0100H;
+ADC AX, BX;
+ADC AX, [SI];
+ADC AX, [3000H]
+ADC [3000H], 0100H;
+
+;Increment
+
+MOV AX, 0FFFH;
+MOV BX, 1000H;
+
+INC AX;
+INC [BX];
+INC [3000H]
+
+;Decrement
+MOV AX, 0FFFH;
+MOV BX, 2000H;
+
+DEC AX;
+DEC BX;
+
+;Subtract
+MOV AX, 0FFFH;
+MOV BX, 2000H;
+MOV [6000H], 3000H;
+
+SUB AX, 1000H;
+SUB AX, BX;
+SUB AX, [6000H];
+SUB [6000H], 1000H; 
+
+;Subtract with Borrow
+MOV AX, 0FFFH;
+MOV BX, 2000H; 
+
+SBB AX, 0100H;
+SBB AX, BX;
+SBB AX, [2500H];
+SBB [2500H], 0100H;
+
+;Compare
+MOV AX, 0FFFH;
+MOV BX, 2000H; 
+
+CMP BX, 0100H;
+CMP AX, 0100;
+CMP [5000H], 0100H;
+CMP BX, [SI];
+CMP BX, CX;
+
+;Adjust after addition
