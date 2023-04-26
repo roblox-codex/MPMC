@@ -67,3 +67,23 @@ CMP BX, [SI];
 CMP BX, CX;
 
 ;Adjust after addition
+ORG 100h         
+MOV AL, 032H     ;Sets AL to 32H
+AAA          
+RET  
+
+;DAS
+ORG 100h 
+MOV AX, 02FCH  ;Sets AX to 02FCH  
+MOV BX, 1152H  ;Sets BX to 1152H
+SUB AX, BX     ;Compute AX-BX
+DAS  
+RET 
+
+;AAS
+ORG 100h 
+MOV AX, 00F9H  ;Sets AX to 00F9H  
+MOV BX, 1152H  ;Sets BX to 0022H
+SUB AX, BX     ;Compute AX-BX
+DAS  
+RET
