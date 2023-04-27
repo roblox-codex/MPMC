@@ -135,6 +135,18 @@ SHL AX, 1
 ;SHR
 SHR AX, 1
 
+;ROR/ROL
+MOV BX, 01021H
+ROL BX, 2
+ROR BX, 2
+
+;RCL/RCR
+MOV AX, 8
+MOV BX, 6
+SUB AX, BX
+RCL AX, 1
+RCR AX, 1
+
 ;JUMP
 ORG 100h   ; Start of program
 
