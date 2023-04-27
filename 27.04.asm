@@ -13,30 +13,36 @@ ADD DL, 10D;
 JMP: L1;
 
 ;Q1 Another answer
-data segment
-STRING1 DB 08h,14h,05h,0Fh,09h
-res db ?
-data ends
- 
-code segment
-assume cs:code, ds:data
-start: mov ax, data
-mov ds, ax
-mov cx, 04h
- 
-mov bl, 00h
-LEA SI, STRING1
-up:
-mov al, [SI]
-cmp al, bl
-jl nxt
-mov bl, al
-nxt:
-inc si
-dec cx
-jnz up
- 
-mov res,bl
-int 3
-code ends
-end start
+ORG 100H
+
+MOV AX, 2000H
+MOV DS, AX
+MOV AL, [0500H]
+MOV CX, 15  
+MOV SI, 0501H  
+
+LOOP_START:
+CMP [SI], AL  
+JBE NEXT_NUM  
+MOV AL, [SI]  
+NEXT_NUM:
+INC SI  
+LOOP LOOP_START  
+
+MOV AX, 2000H  ; set segment register
+MOV DS, AX
+
+MOV AL, [0500H]  ; load first number as current maximum
+
+MOV CX, 15  ; initialize loop counter
+MOV SI, 0501H  ; initialize pointer to next number
+
+LOOP_START:
+CMP [SI], AL  ; compare next number with current maximum
+JBE NEXT_NUM  ; if next number is less than or equal to current maximum, skip to next number
+MOV AL, [SI]  ; otherwise, update current maximum with next number
+NEXT_NUM:
+INC SI  ; move pointer to next number
+LOOP LOOP_START  ; repeat until all numbers have been compared
+
+; AL now contains the largest number in the array
