@@ -46,3 +46,27 @@ INC SI  ; move pointer to next number
 LOOP LOOP_START  ; repeat until all numbers have been compared
 
 ; AL now contains the largest number in the array
+
+;Final Answer of Q1
+ORG 100H
+MOV AX, 6000H;
+MOV DS, AX;
+MOV BX, 5000H;
+MOV DL, 15D;
+MOV CX, 15D;
+
+L1: MOV [BX], DL;
+INC BX;
+ADD DL, 10D;
+
+LOOP L1;
+MOV AX, 0000H;
+MOV DX, 0000H;
+MOV BX, 5000H;
+MOV CX, 15D;
+
+L2: MOV AL, [BX];
+ADD DX, AX;
+INC BX;
+LOOP L2;
+HLT;
