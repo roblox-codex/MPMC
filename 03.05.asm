@@ -39,9 +39,9 @@ ARRAY: MOV [BX], AX;
        MOV BX, 1000H;
        MOV AX, [BX];
        MOV CX, 1FH;
-L1: CMP AX, [BX+1];
+L1: CMP AX, [BX+2];
        JNC L2
-       MOV AX, [BX+1]
+       MOV AX, [BX+2]
 L2: INC BX;
        LOOP L1;
        MOV [0FFFH], AX
