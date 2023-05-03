@@ -3,6 +3,7 @@
 ;Q3. Write a program to find out the number of even and odd numbers from a given series of 16-bit hexadecimal numbers.
 ;Q4. Write a program to findout the number of positive numbers and negative numbers from a given series of signed numbers.
 
+;ANS: 1
 ORG 100H
        MOV AX, 6000H;
        MOV DS, AX;
@@ -17,5 +18,9 @@ ARRAY: MOV [BX], AL;
        MOV AL, [BX];
        MOV CX, 1FH;
 L1: CMP AL, [BX+1];
-      JMNC L2
-      MOV AL, [BX+1]
+       JNC L2
+       MOV AL, [BX+1]
+L2: INC BX;
+       LOOP L1;
+       MOV [0FFFH], AL
+       HLT
