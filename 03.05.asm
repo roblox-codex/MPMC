@@ -9,7 +9,7 @@ ORG 100H
        MOV DS, AX;
        MOV AL, 30H;
        MOV BX, 1000H;
-       MOV CX, 20H;
+       MOV CX, 96H;
 ARRAY: MOV [BX], AL;
        ADD AL, 50D;
        INC BX;
