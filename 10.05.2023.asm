@@ -9,7 +9,7 @@ ORG 100H;
 MOV CL, 0FH;
 MOV CH, 00H;
 MOV DI, SI;
-ADD DI, SI;
+ADD DI, 0EH;
 L1: MOV AL, [SI];
     MOV BL, [DI];
     XCHG [SI], BL;
